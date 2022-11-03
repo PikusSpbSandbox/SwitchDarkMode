@@ -1,6 +1,6 @@
 ﻿# SwitchDarkMode
  
-Autohotkey project, see https://www.autohotkey.com/
+Autohotkey script, see https://www.autohotkey.com/
 
 Intructions: 
 * Compile script using Autohotkey
