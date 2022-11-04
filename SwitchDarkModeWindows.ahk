@@ -13,6 +13,8 @@ else {                                            ; if the mode was dark
 	RegWrite,Reg_Dword,HKCU,SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize,AppsUseLightTheme   ,1
 	}
 ; tell the system it needs to refresh the user settings
-RunWait taskkill /F /IM explorer.exe 
+run,RUNDLL32.EXE USER32.DLL`, UpdatePerUserSystemParameters `,2 `,True
+; reload explorer.exe to fix UI for 22h2
+RunWait taskkill /F /IM explorer.exe
 Run explorer.exe
-Exit
+Return
