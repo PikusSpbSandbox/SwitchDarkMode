@@ -1,5 +1,5 @@
 ﻿#SingleInstance Force                             ; Allow only one instance off this app]
-^F10::
+NumpadEnter::
 ; read the System lightmode from the registry 
 RegRead,L_LightMode,HKCU,SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize,SystemUsesLightTheme
 If L_LightMode {                                  ; if the mode was Light
@@ -13,8 +13,9 @@ else {                                            ; if the mode was dark
 	RegWrite,Reg_Dword,HKCU,SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize,AppsUseLightTheme   ,1
 	}
 ; tell the system it needs to refresh the user settings
-run,RUNDLL32.EXE USER32.DLL`, UpdatePerUserSystemParameters `,2 `,True
+run, RUNDLL32.EXE USER32.DLL, UpdatePerUserSystemParameters 1 True
 ; reload explorer.exe to fix UI for 22h2
 RunWait taskkill /F /IM explorer.exe
+Sleep, 2000
 Run explorer.exe
 Return
